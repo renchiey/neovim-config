@@ -7,11 +7,9 @@ return {
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
-    lazy = false, -- neo-tree will lazily load itself
+    lazy = false,                    -- neo-tree will lazily load itself
     config = function()
       vim.keymap.set('n', '<C-n>', '<Cmd>Neotree toggle<CR>')
-      vim.keymap.set('n', '<C-h>', '<Cmd>Neotree source=filesystem focus<CR>')
-
     end
   },
 }

@@ -1,4 +1,6 @@
-vim.lsp.enable('lua_ls')
+local servers = { 'lua_ls' }
+
+vim.lsp.enable(servers)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
