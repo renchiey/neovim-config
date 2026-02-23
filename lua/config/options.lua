@@ -1,5 +1,12 @@
 -- options
 --------------------------------------------------------------------------------
+vim.filetype.add({
+  extension = {
+    jsx = "javascriptreact",
+    tsx = "typescriptreact",
+  },
+})
+
 -- Relative and absolute line numbers combined
 vim.opt.number = true
 vim.opt.relativenumber = true

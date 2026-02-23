@@ -1,4 +1,28 @@
-local servers = { 'lua_ls', 'ts_ls' }
+local servers = { 'lua_ls', 'ts_ls', 'rust_analyzer', 'astro' }
+
+NODE_PATH = "/Users/renchieyang/.nvm/versions/node/v22.12.0/"
+
+vim.lsp.config('ts_ls', {
+  init_options = {
+    tsserver = {
+      path = NODE_PATH .. "bin/tsc",
+    },
+  },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  },
+})
+
+vim.lsp.config("astro", {
+  init_options = {
+    typescript = {
+      tsdk = NODE_PATH .. "lib/node_modules/typescript/lib"
+    }
+  }
+})
 
 vim.lsp.enable(servers)
 
