@@ -1,11 +1,11 @@
-local servers = { 'lua_ls', 'ts_ls', 'rust_analyzer', 'astro' }
+local servers = { 'lua_ls', 'ts_ls', 'rust_analyzer', 'astro', 'gopls', 'cssls' }
 
-NODE_PATH = "/Users/renchieyang/.nvm/versions/node/v22.12.0/"
+local node_path = "/Users/renchieyang/.nvm/versions/node/v22.12.0/"
 
 vim.lsp.config('ts_ls', {
   init_options = {
     tsserver = {
-      path = NODE_PATH .. "bin/tsc",
+      path = node_path .. "bin/tsc",
     },
   },
   filetypes = {
@@ -19,7 +19,7 @@ vim.lsp.config('ts_ls', {
 vim.lsp.config("astro", {
   init_options = {
     typescript = {
-      tsdk = NODE_PATH .. "lib/node_modules/typescript/lib"
+      tsdk = node_path .. "lib/node_modules/typescript/lib"
     }
   }
 })
@@ -32,6 +32,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
       vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup' }
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+
+      -- reactivate completion with ctrl + space
       vim.keymap.set('i', '<C-Space>', function()
         vim.lsp.completion.get()
       end)
